@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tik-Toc Workshop - Feed</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="screen feed-screen active">
+        <div class="phone-frame">
+            <div class="top-bar">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" onclick="filterFeed('following')">Following</button>
+                    <button class="filter-btn" onclick="filterFeed('friends')">Friends</button>
+                    <button class="filter-btn" onclick="filterFeed('foryou')">For You</button>
+                </div>
+                <button class="search-btn" onclick="window.location.href='search.html'">🔍</button>
+            </div>
+            
+            <div class="feed-content">
+                <div class="video-item" data-filter="following">
+                    <div class="video-placeholder">
+                        <img src="Resources/dencemoves.png" alt="Dance Video" class="video-bg-image">
+                        <div class="video-description">
+                            <a href="profile.html" style="text-decoration: none; cursor: pointer;">
+                                <img src="Resources/tiktok.png" alt="User" class="video-user-logo">
+                            </a>
+                            <div class="video-user-info">
+                                <span class="video-username">sarah_music</span>
+                                <span class="video-caption">check out my new dance moves #dance</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-actions">
+                        <button class="action-btn" title="Like">❤️</button>
+                        <button class="action-btn" title="Comment" onclick="window.location.href='comments.html'">💬</button>
+                        <button class="action-btn" title="Share">🔖</button>
+                        <button class="action-btn" title="Share">📤</button>
+                    </div>
+                </div>
+ 
+                <div class="video-item" data-filter="friends" style="display: none;">
+                    <div class="video-placeholder">
+                        <img src="Resources/CodeFail.png" alt="Code Fail Video" class="video-bg-image">
+                        <div class="video-description">
+                            <a href="profile.html" style="text-decoration: none; cursor: pointer;">
+                                <img src="Resources/tiktok.png" alt="User" class="video-user-logo">
+                            </a>
+                            <div class="video-user-info">
+                                <span class="video-username">mike.dev</span>
+                                <span class="video-caption">coding fails compilation #ThisCode</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-actions">
+                        <button class="action-btn">❤️</button>
+                        <button class="action-btn" onclick="window.location.href='comments.html'">💬</button>
+                        <button class="action-btn">🔖</button>
+                        <button class="action-btn">📤</button>
+                    </div>
+                </div>
+
+                <div class="video-item" data-filter="foryou" style="display: none;">
+                    <div class="video-placeholder">
+                        <img src="Resources/HiddenGems.png" alt="Travel Video" class="video-bg-image">
+                        <div class="video-description">
+                            <a href="profile.html" style="text-decoration: none; cursor: pointer;">
+                                <img src="Resources/tiktok.png" alt="User" class="video-user-logo">
+                            </a>
+                            <div class="video-user-info">
+                                <span class="video-username">emma.travels</span>
+                                <span class="video-caption">hidden gems #travel</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-actions">
+                        <button class="action-btn">❤️</button>
+                        <button class="action-btn" onclick="window.location.href='comments.html'">💬</button>
+                        <button class="action-btn">🔖</button>
+                        <button class="action-btn">📤</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-description" style="display: none;">User Description</div>
+        </div>
+    </div>
+
+    <script>
+        function filterFeed(filter) {
+            // Hide all videos
+            document.querySelectorAll('.video-item').forEach(video => {
+                video.style.display = 'none';
+            });
+            
+            // Show videos of selected filter
+            document.querySelectorAll(`.video-item[data-filter="${filter}"]`).forEach(video => {
+                video.style.display = 'flex';
+            });
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        function goToProfile() {
+            window.location.href = 'profile.html';
+        }
+    </script>
+</body>
+</html>
